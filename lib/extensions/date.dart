@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-extension MyDateTime on DateTime {
+extension DateTimeExtension on DateTime {
   /// Converts the given [seconds] since epoch to a DateTime object.
   static DateTime fromSecondsSinceEpoch(int seconds) => DateTime.fromMillisecondsSinceEpoch(seconds * 1000);
 
