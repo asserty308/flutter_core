@@ -4,10 +4,11 @@ import 'package:intl/intl.dart';
 extension TimeOfDayExtension on TimeOfDay {
   /// Formats this instance to [pattern].
   String formatToPattern([String pattern = 'HH:mm']) {
-    final now = DateTime.now();
-    final dt = DateTime(now.year, now.month, now.day, hour, minute);
+    final dt = DateTime(2000, 1, 1, hour, minute);
     return DateFormat(pattern).format(dt); 
   }
+
+  String get hhMM => formatToPattern('HH:mm');
 }
 
 extension TimeOfDayString on String {
