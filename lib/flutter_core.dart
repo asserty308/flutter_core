@@ -1,4 +1,4 @@
 library;
 
-export 'extensions/extensions.dart';
-export 'ui/widgets/gaps.dart';
+export 'src/extensions/extensions.dart';
+export 'src/ui/ui.dart';
