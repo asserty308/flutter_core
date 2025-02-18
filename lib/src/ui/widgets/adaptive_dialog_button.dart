@@ -18,9 +18,6 @@ class AdaptiveDialogButton extends StatelessWidget {
       onPressed: onPressed,
       child: child,
     ),
-    _ => TextButton(
-      onPressed: onPressed,
-      child: child,
-    ),
+    _ => TextButton(onPressed: onPressed, child: child),
   };
 }

@@ -5,14 +5,16 @@ import 'package:intl/intl.dart';
 
 extension DateTimeExtension on DateTime {
   /// Converts the given [seconds] since epoch to a DateTime object.
-  static DateTime fromSecondsSinceEpoch(int seconds) => DateTime.fromMillisecondsSinceEpoch(seconds * 1000);
+  static DateTime fromSecondsSinceEpoch(int seconds) =>
+      DateTime.fromMillisecondsSinceEpoch(seconds * 1000);
 
   /// Returns true when this is the same day as [date]
   /// When [checkYear] is true the year is included which means that the date must be on the same year.
   /// When [checkYear] is false, the date must not be on the same year but on the same day.
-  bool isSameDay(DateTime date, [bool checkYear = false]) {
-    return day == date.day && month == date.month && (checkYear ? year == date.year : true);
-  }
+  bool isSameDay(DateTime date, [bool checkYear = false]) =>
+      day == date.day &&
+      month == date.month &&
+      (checkYear ? year == date.year : true);
 
   /// Same as [isSameDay] but for DateTime.now().
   bool isToday([bool checkYear = true]) => isSameDay(DateTime.now(), checkYear);
@@ -30,7 +32,7 @@ extension DateTimeExtension on DateTime {
     } else if (month1 == month2) {
       final day1 = currentDate.day;
       final day2 = day;
-      
+
       if (day2 > day1) {
         age--;
       }
@@ -50,10 +52,10 @@ extension DateTimeExtension on DateTime {
   /// Calculates week number from a date as per https://en.wikipedia.org/wiki/ISO_week_date#Calculation
   int get weekNumber {
     final dayOfYear = int.parse(DateFormat('D').format(_local));
-    var woy =  ((dayOfYear - weekday + 10) / 7).floor();
+    var woy = ((dayOfYear - weekday + 10) / 7).floor();
 
     if (woy < 1) {
-      woy = copyWith(year: year-1).numOfCalendarWeeks;
+      woy = copyWith(year: year - 1).numOfCalendarWeeks;
     } else if (woy > numOfCalendarWeeks) {
       woy = 1;
     }
@@ -87,16 +89,18 @@ extension DateTimeExtension on DateTime {
   DateTime get endOfMonth => startOfNextMonth.subtract(const Duration(days: 1));
 
   /// Updates the date components of this DateTime with the given [date].
-  DateTime setDate(DateTime date) => copyWith(year: date.year, month: date.month, day: date.day);
+  DateTime setDate(DateTime date) =>
+      copyWith(year: date.year, month: date.month, day: date.day);
 
   /// Sets the time of day for this DateTime to the given [time].
-  DateTime setTimeOfDay(TimeOfDay time) => startOfDay.copyWith(hour: time.hour, minute: time.minute);
+  DateTime setTimeOfDay(TimeOfDay time) =>
+      startOfDay.copyWith(hour: time.hour, minute: time.minute);
 
-  /// True when the weekday is a saturday or sunday. 
+  /// True when the weekday is a saturday or sunday.
   bool get isWeekend => weekday > 5;
 
   /// Returns the difference between now and this.
-  /// 
+  ///
   /// Positive for future dates, negative for past dates and zero for today.
   int get daysFromNow => (difference(DateTime.now()).inHours / 24.0).ceil();
 
@@ -104,16 +108,22 @@ extension DateTimeExtension on DateTime {
   int get daysOfMonth => startOfNextMonth.difference(startOfMonth).inDays;
 
   /// Returns a list of all days in the month for this DateTime.
-  List<DateTime> get daysOfMonthList => List.generate(daysOfMonth, (index) => DateTime(year, month, index + 1));
+  List<DateTime> get daysOfMonthList =>
+      List.generate(daysOfMonth, (index) => DateTime(year, month, index + 1));
 
   /// Returns a list of all weekdays in the month for this DateTime.
-  Iterable<DateTime> get weekdaysOfMonthList => daysOfMonthList.where((day) => !day.isWeekend);
+  Iterable<DateTime> get weekdaysOfMonthList =>
+      daysOfMonthList.where((day) => !day.isWeekend);
 
   List<DateTime> daysBetween(DateTime to) {
     final days = <DateTime>[];
     const oneDay = Duration(days: 1);
 
-    for (var day = startOfDay; day.isBefore(to.add(oneDay)); day = day.add(oneDay)) {
+    for (
+      var day = startOfDay;
+      day.isBefore(to.add(oneDay));
+      day = day.add(oneDay)
+    ) {
       days.add(day);
     }
 
@@ -138,23 +148,24 @@ extension DateTimeExtension on DateTime {
   String formatSQLDate() => formatDate('yyyy-MM-dd');
 
   /// Returns a string representation of the date using the SQL DateTime format.
-  String formatSQLDateTime({bool withSeconds = true}) => formatDate('yyyy-MM-dd HH:mm${withSeconds ? ':ss' : ''}');
+  String formatSQLDateTime({bool withSeconds = true}) =>
+      formatDate('yyyy-MM-dd HH:mm${withSeconds ? ':ss' : ''}');
 
   /// Returns the date as dd.MM.yyyy.
-  /// 
+  ///
   /// Example: 01.01.2025
   String get dMy => DateFormat('dd.MM.yyyy').format(this);
 
   /// Representation of the date with fully written month.
   /// Uses the app's locale.
-  /// 
+  ///
   /// Example for de_DE: Juli 1996
   /// Example for en_US: July, 1996
   String get yMMMM => DateFormat.yMMMM().format(_local);
 
   /// Representation of the date with numeric month.
   /// Uses the app's locale.
-  /// 
+  ///
   /// Example for de_DE: 10.06.1996
   /// Example for en_US: 06/10/1996
   String get yMd => DateFormat.yMd().format(_local);
@@ -164,26 +175,26 @@ extension DateTimeExtension on DateTime {
 
   /// Representation of the date with abbreviated month.
   /// Uses the app's locale.
-  /// 
+  ///
   /// Example for de_DE: 10. Jan 1996
   /// Example for en_US: Jan 10, 1996
   String get yMMMd => DateFormat.yMMMd().format(_local);
 
   /// Representation of the date with fully written month.
   /// Uses the app's locale.
-  /// 
+  ///
   /// Example for de_DE: 8. Juli 1996
   /// Example for en_US: July 8, 1996
   String get yMMMMd => DateFormat.yMMMMd().format(_local);
 
   /// Representation of the time in the app's locale.
-  /// 
+  ///
   /// Example for de_DE: 14:20
   /// Example for en_US: 2:20 PM
   String get jm => DateFormat.jm().format(_local);
 
   /// Representation of the time including seconds in the app's locale.
-  /// 
+  ///
   /// Example for de_DE: 14:20:30
   /// Example for en_US: 2:20:30 PM
   String get jms => DateFormat.jms().format(_local);
@@ -195,13 +206,13 @@ extension DateTimeExtension on DateTime {
   String get hhmmss => formatDate('HH:mm:ss');
 
   /// Representation of the date including the full length name of the day of week.
-  /// 
+  ///
   /// Example for de_DE: Montag, 22. April 2024
   /// Example for en_US: Monday April 22, 2024
   String get yMMMMEEEEd => DateFormat.yMMMMEEEEd().format(_local);
 
   /// Representation of the date including the full length name of the day of week.
-  /// 
+  ///
   /// Example for de_DE: Montag, 22. April
   /// Example for en_US: Monday April 22
   String get mmmmEEEEd => DateFormat.MMMMEEEEd().format(_local);
@@ -217,7 +228,8 @@ extension DateTimeExtension on DateTime {
   bool operator >(DateTime other) => isAfter(other);
 
   /// Overloaded less than or equal to operator. Returns true if this DateTime is at the same moment as or before [other].
-  bool operator <=(DateTime other) => isAtSameMomentAs(other) || isBefore(other);
+  bool operator <=(DateTime other) =>
+      isAtSameMomentAs(other) || isBefore(other);
 
   /// Overloaded greater than or equal to operator. Returns true if this DateTime is at the same moment as or after [other].
   bool operator >=(DateTime other) => isAtSameMomentAs(other) || isAfter(other);
