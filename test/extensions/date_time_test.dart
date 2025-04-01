@@ -43,22 +43,25 @@ void main() {
     expect(birthdate.ageToday, age);
   });
 
-  test('numOfCalendarWeeks returns correct number of weeks for a given year', () {
-    expect(DateTime(2020).numOfCalendarWeeks, 53);
-    expect(DateTime(2021).numOfCalendarWeeks, 52);
-    expect(DateTime(2022).numOfCalendarWeeks, 52);
-    expect(DateTime(2023).numOfCalendarWeeks, 52);
-    expect(DateTime(2024).numOfCalendarWeeks, 52);
-    expect(DateTime(2025).numOfCalendarWeeks, 52);
-    expect(DateTime(2026).numOfCalendarWeeks, 53);
-    expect(DateTime(2027).numOfCalendarWeeks, 52);
-    expect(DateTime(2028).numOfCalendarWeeks, 52);
-    expect(DateTime(2029).numOfCalendarWeeks, 52);
-    expect(DateTime(2030).numOfCalendarWeeks, 52);
-    expect(DateTime(2031).numOfCalendarWeeks, 52);
-    expect(DateTime(2032).numOfCalendarWeeks, 53);
-    expect(DateTime(2037).numOfCalendarWeeks, 53);
-  });
+  test(
+    'numOfCalendarWeeks returns correct number of weeks for a given year',
+    () {
+      expect(DateTime(2020).numOfCalendarWeeks, 53);
+      expect(DateTime(2021).numOfCalendarWeeks, 52);
+      expect(DateTime(2022).numOfCalendarWeeks, 52);
+      expect(DateTime(2023).numOfCalendarWeeks, 52);
+      expect(DateTime(2024).numOfCalendarWeeks, 52);
+      expect(DateTime(2025).numOfCalendarWeeks, 52);
+      expect(DateTime(2026).numOfCalendarWeeks, 53);
+      expect(DateTime(2027).numOfCalendarWeeks, 52);
+      expect(DateTime(2028).numOfCalendarWeeks, 52);
+      expect(DateTime(2029).numOfCalendarWeeks, 52);
+      expect(DateTime(2030).numOfCalendarWeeks, 52);
+      expect(DateTime(2031).numOfCalendarWeeks, 52);
+      expect(DateTime(2032).numOfCalendarWeeks, 53);
+      expect(DateTime(2037).numOfCalendarWeeks, 53);
+    },
+  );
 
   test('weekNumber returns correct week number from a given date', () {
     expect(DateTime(2020, 12, 28).weekNumber, 53);
@@ -103,5 +106,57 @@ void main() {
     final betweenDays = from.daysBetween(to);
 
     expect(betweenDays, expectedDays);
+  });
+
+  test('Test days in month', () {
+    final january24 = DateTime(2024, 1, 1);
+    final february24 = DateTime(2024, 2, 1);
+    final march24 = DateTime(2024, 3, 1);
+    final april24 = DateTime(2024, 4, 1);
+    final may24 = DateTime(2024, 5, 1);
+    final june24 = DateTime(2024, 6, 1);
+    final july24 = DateTime(2024, 7, 1);
+    final august24 = DateTime(2024, 8, 1);
+    final september24 = DateTime(2024, 9, 1);
+    final october24 = DateTime(2024, 10, 1);
+    final november24 = DateTime(2024, 11, 1);
+    final december24 = DateTime(2024, 12, 1);
+    final january25 = DateTime(2025, 1, 1);
+    final february25 = DateTime(2025, 2, 1);
+    final march25 = DateTime(2025, 3, 1);
+    final april25 = DateTime(2025, 4, 1);
+    final may25 = DateTime(2025, 5, 1);
+    final june25 = DateTime(2025, 6, 1);
+    final july25 = DateTime(2025, 7, 1);
+    final august25 = DateTime(2025, 8, 1);
+    final september25 = DateTime(2025, 9, 1);
+    final october25 = DateTime(2025, 10, 1);
+    final november25 = DateTime(2025, 11, 1);
+    final december25 = DateTime(2025, 12, 1);
+
+    expect(january24.daysInMonth, 31);
+    expect(february24.daysInMonth, 29);
+    expect(march24.daysInMonth, 31);
+    expect(april24.daysInMonth, 30);
+    expect(may24.daysInMonth, 31);
+    expect(june24.daysInMonth, 30);
+    expect(july24.daysInMonth, 31);
+    expect(august24.daysInMonth, 31);
+    expect(september24.daysInMonth, 30);
+    expect(october24.daysInMonth, 31);
+    expect(november24.daysInMonth, 30);
+    expect(december24.daysInMonth, 31);
+    expect(january25.daysInMonth, 31);
+    expect(february25.daysInMonth, 28);
+    expect(march25.daysInMonth, 31);
+    expect(april25.daysInMonth, 30);
+    expect(may25.daysInMonth, 31);
+    expect(june25.daysInMonth, 30);
+    expect(july25.daysInMonth, 31);
+    expect(august25.daysInMonth, 31);
+    expect(september25.daysInMonth, 30);
+    expect(october25.daysInMonth, 31);
+    expect(november25.daysInMonth, 30);
+    expect(december25.daysInMonth, 31);
   });
 }

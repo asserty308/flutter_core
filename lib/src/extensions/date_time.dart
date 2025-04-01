@@ -81,12 +81,13 @@ extension DateTimeExtension on DateTime {
   DateTime get endOfLastMonth => DateTime(year, month - 1).endOfMonth;
 
   /// Returns the start of the next month for this DateTime.
-  DateTime get startOfNextMonth => DateTime(year, month + 1, 1);
+  DateTime get startOfNextMonth =>
+      month == 12 ? DateTime(year + 1, 1, 1) : DateTime(year, month + 1, 1);
 
   DateTime get startOfLastMonth => DateTime(year, month - 1, 1);
 
   /// Returns the end of the month for this DateTime.
-  DateTime get endOfMonth => startOfNextMonth.subtract(const Duration(days: 1));
+  DateTime get endOfMonth => startOfNextMonth.copyWith(day: 0);
 
   /// Updates the date components of this DateTime with the given [date].
   DateTime setDate(DateTime date) =>
@@ -105,15 +106,15 @@ extension DateTimeExtension on DateTime {
   int get daysFromNow => (difference(DateTime.now()).inHours / 24.0).ceil();
 
   /// Returns the number of days in the month for this DateTime.
-  int get daysOfMonth => startOfNextMonth.difference(startOfMonth).inDays;
+  int get daysInMonth => endOfMonth.day;
 
   /// Returns a list of all days in the month for this DateTime.
-  List<DateTime> get daysOfMonthList =>
-      List.generate(daysOfMonth, (index) => DateTime(year, month, index + 1));
+  List<DateTime> get daysInMonthList =>
+      List.generate(daysInMonth, (index) => DateTime(year, month, index + 1));
 
   /// Returns a list of all weekdays in the month for this DateTime.
   Iterable<DateTime> get weekdaysOfMonthList =>
-      daysOfMonthList.where((day) => !day.isWeekend);
+      daysInMonthList.where((day) => !day.isWeekend);
 
   List<DateTime> daysBetween(DateTime to) {
     final days = <DateTime>[];
