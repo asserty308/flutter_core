@@ -1,6 +1,6 @@
 name: flutter_core
 description: "A new Flutter package project."
-version: 1.0.3
+version: 1.0.4
 homepage:
 
 environment:
@@ -9,7 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_riverpod: ^2.6.1
+  flutter_riverpod: ^3.0.0
   intl: ^0.20.2
   logger: ^2.6.1
 
