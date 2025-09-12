@@ -1,5 +1,5 @@
 extension DurationExtension on Duration {
-  String format({String hoursTrailing = '', String minutesTrailing = ''}) {
+  String format({String hoursTrailing = 'h', String minutesTrailing = 'm'}) {
     if (inHours > 0) {
       return formatHMS(trailing: hoursTrailing);
     }
