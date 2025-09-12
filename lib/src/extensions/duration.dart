@@ -1,31 +1,31 @@
 extension DurationExtension on Duration {
-  String get format {
+  String format({String hoursTrailing = '', String minutesTrailing = ''}) {
     if (inHours > 0) {
-      return formatHMS;
+      return formatHMS(trailing: hoursTrailing);
     }
 
-    return formatMS;
+    return formatMS(trailing: minutesTrailing);
   }
 
   /// Returns HH:mm:ss
-  String get formatHMS {
+  String formatHMS({String trailing = ''}) {
     final hours = inHours.toString().padLeft(2, '0');
     final minutes = (inMinutes % 60).toString().padLeft(2, '0');
     final seconds = (inSeconds % 60).toString().padLeft(2, '0');
-    return '$hours:$minutes:$seconds';
+    return '$hours:$minutes:$seconds${trailing.isNotEmpty ? ' $trailing' : ''}';
   }
 
   /// Returns HH:mm
-  String get formatHM {
+  String formatHM({String trailing = ''}) {
     final hours = inHours.toString().padLeft(2, '0');
     final minutes = (inMinutes % 60).toString().padLeft(2, '0');
-    return '$hours:$minutes';
+    return '$hours:$minutes${trailing.isNotEmpty ? ' $trailing' : ''}';
   }
 
   /// Returns mm:ss
-  String get formatMS {
+  String formatMS({String trailing = ''}) {
     final minutes = inMinutes.toString().padLeft(2, '0');
     final seconds = (inSeconds % 60).toString().padLeft(2, '0');
-    return '$minutes:$seconds';
+    return '$minutes:$seconds${trailing.isNotEmpty ? ' $trailing' : ''}';
   }
 }
