@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_core/src/extensions/widget.dart';
+import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   // ignore: sized_box_for_whitespace
@@ -56,13 +56,19 @@ void main() {
 
     group('layout tests', () {
       testWidgets('expanded adds Expanded widget', (tester) async {
-        await tester.pumpWidget(MaterialApp(home: Row(children: [testWidget.expanded])));
+        await tester.pumpWidget(
+          MaterialApp(home: Row(children: [testWidget.expanded])),
+        );
         expect(find.byType(Expanded), findsOneWidget);
       });
 
       testWidgets('flexible adds Flexible widget', (tester) async {
         await tester.pumpWidget(
-          MaterialApp(home: Row(children: [testWidget.flexible(flex: 2, fit: FlexFit.tight)])),
+          MaterialApp(
+            home: Row(
+              children: [testWidget.flexible(flex: 2, fit: FlexFit.tight)],
+            ),
+          ),
         );
         final flexible = tester.widget<Flexible>(find.byType(Flexible));
         expect(flexible.flex, 2);
@@ -74,7 +80,9 @@ void main() {
       testWidgets('withTooltip adds Tooltip when message provided', (
         tester,
       ) async {
-        await tester.pumpWidget(MaterialApp(home: testWidget.withTooltip('Test tooltip')));
+        await tester.pumpWidget(
+          MaterialApp(home: testWidget.withTooltip('Test tooltip')),
+        );
         expect(find.byType(Tooltip), findsOneWidget);
         final tooltip = tester.widget<Tooltip>(find.byType(Tooltip));
         expect(tooltip.message, 'Test tooltip');

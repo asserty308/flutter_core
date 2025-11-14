@@ -14,7 +14,7 @@ class AdaptiveDialogButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => switch (context.theme.platform) {
-    TargetPlatform.iOS || TargetPlatform.macOS => CupertinoDialogAction(
+    .iOS || .macOS => CupertinoDialogAction(
       onPressed: onPressed,
       child: child,
     ),
