@@ -1,14 +1,16 @@
 extension DurationExtension on Duration {
   String format({String hoursTrailing = 'h', String minutesTrailing = 'm'}) {
     if (inHours > 0) {
-      return formatHMS(trailing: hoursTrailing);
+      return _formatHMS(trailing: hoursTrailing);
     }
 
-    return formatMS(trailing: minutesTrailing);
+    return _formatMS(trailing: minutesTrailing);
   }
 
   /// Returns HH:mm:ss
-  String formatHMS({String trailing = ''}) {
+  String get formatHMS => _formatHMS();
+
+  String _formatHMS({String trailing = ''}) {
     final hours = inHours.toString().padLeft(2, '0');
     final minutes = (inMinutes % 60).toString().padLeft(2, '0');
     final seconds = (inSeconds % 60).toString().padLeft(2, '0');
@@ -16,14 +18,18 @@ extension DurationExtension on Duration {
   }
 
   /// Returns HH:mm
-  String formatHM({String trailing = ''}) {
+  String get formatHM => _formatHM();
+
+  String _formatHM({String trailing = ''}) {
     final hours = inHours.toString().padLeft(2, '0');
     final minutes = (inMinutes % 60).toString().padLeft(2, '0');
     return '$hours:$minutes${trailing.isNotEmpty ? ' $trailing' : ''}';
   }
 
   /// Returns mm:ss
-  String formatMS({String trailing = ''}) {
+  String get formatMS => _formatMS();
+
+  String _formatMS({String trailing = ''}) {
     final minutes = inMinutes.toString().padLeft(2, '0');
     final seconds = (inSeconds % 60).toString().padLeft(2, '0');
     return '$minutes:$seconds${trailing.isNotEmpty ? ' $trailing' : ''}';
