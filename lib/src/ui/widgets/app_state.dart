@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 /// App Lifecycle: Running -> onIncactive (App list) -> onHide -> onPause -> onRestart -> onShow -> onResume
@@ -56,8 +56,8 @@ mixin _AppLifecycleMixin<T extends StatefulWidget> on State<T> {
 }
 
 abstract class AppState<T extends StatefulWidget> extends State<T>
-    with _AppLifecycleMixin<T> {}
+    with _AppLifecycleMixin<T>;
 
 abstract class AppConsumerState<T extends ConsumerStatefulWidget>
     extends ConsumerState<T>
-    with _AppLifecycleMixin<T> {}
+    with _AppLifecycleMixin<T>;

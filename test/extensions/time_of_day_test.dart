@@ -1,28 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_core/src/extensions/time_of_day.dart';
+import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   group('TimeOfDayExtension', () {
     test('formatToPattern with default pattern', () {
-      final time = TimeOfDay(hour: 14, minute: 30);
+      const time = TimeOfDay(hour: 14, minute: 30);
       expect(time.formatToPattern(), '14:30');
     });
 
     test('formatToPattern with custom pattern', () {
-      final time = TimeOfDay(hour: 14, minute: 30);
+      const time = TimeOfDay(hour: 14, minute: 30);
       expect(time.formatToPattern('h:mm a'), '2:30 PM');
     });
 
     test('hhMM getter', () {
-      final time = TimeOfDay(hour: 9, minute: 5);
+      const time = TimeOfDay(hour: 9, minute: 5);
       expect(time.hhMM, '09:05');
     });
 
     test('various times of day', () {
-      expect(TimeOfDay(hour: 0, minute: 0).formatToPattern(), '00:00');
-      expect(TimeOfDay(hour: 12, minute: 0).formatToPattern(), '12:00');
-      expect(TimeOfDay(hour: 23, minute: 59).formatToPattern(), '23:59');
+      expect(const TimeOfDay(hour: 0, minute: 0).formatToPattern(), '00:00');
+      expect(const TimeOfDay(hour: 12, minute: 0).formatToPattern(), '12:00');
+      expect(const TimeOfDay(hour: 23, minute: 59).formatToPattern(), '23:59');
     });
   });
 

@@ -17,31 +17,31 @@ void main() {
       testWidgets('paddingAll adds uniform padding', (tester) async {
         await tester.pumpWidget(testWidget.paddingAll(16.0));
         final padding = tester.widget<Padding>(find.byType(Padding));
-        expect(padding.padding, EdgeInsets.all(16.0));
+        expect(padding.padding, const EdgeInsets.all(16.0));
       });
 
       testWidgets('paddingLTRB adds directional padding', (tester) async {
         await tester.pumpWidget(testWidget.paddingLTRB(1, 2, 3, 4));
         final padding = tester.widget<Padding>(find.byType(Padding));
-        expect(padding.padding, EdgeInsets.fromLTRB(1, 2, 3, 4));
+        expect(padding.padding, const EdgeInsets.fromLTRB(1, 2, 3, 4));
       });
 
       testWidgets('paddingOnly adds specific padding', (tester) async {
         await tester.pumpWidget(testWidget.paddingOnly(left: 10, bottom: 20));
         final padding = tester.widget<Padding>(find.byType(Padding));
-        expect(padding.padding, EdgeInsets.only(left: 10, bottom: 20));
+        expect(padding.padding, const EdgeInsets.only(left: 10, bottom: 20));
       });
 
       testWidgets('paddingHorizontal adds horizontal padding', (tester) async {
         await tester.pumpWidget(testWidget.paddingHorizontal(8.0));
         final padding = tester.widget<Padding>(find.byType(Padding));
-        expect(padding.padding, EdgeInsets.symmetric(horizontal: 8.0));
+        expect(padding.padding, const EdgeInsets.symmetric(horizontal: 8.0));
       });
 
       testWidgets('paddingVertical adds vertical padding', (tester) async {
         await tester.pumpWidget(testWidget.paddingVertical(8.0));
         final padding = tester.widget<Padding>(find.byType(Padding));
-        expect(padding.padding, EdgeInsets.symmetric(vertical: 8.0));
+        expect(padding.padding, const EdgeInsets.symmetric(vertical: 8.0));
       });
 
       testWidgets('paddingSymmetric adds symmetric padding', (tester) async {
@@ -49,7 +49,7 @@ void main() {
         final padding = tester.widget<Padding>(find.byType(Padding));
         expect(
           padding.padding,
-          EdgeInsets.symmetric(horizontal: 8.0, vertical: 16.0),
+          const EdgeInsets.symmetric(horizontal: 8.0, vertical: 16.0),
         );
       });
     });

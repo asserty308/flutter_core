@@ -3,11 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_core/flutter_core.dart';
 
 class AdaptiveDialogButton extends StatelessWidget {
-  const AdaptiveDialogButton({
-    super.key,
-    required this.onPressed,
-    required this.child,
-  });
+  const new({super.key, required this.onPressed, required this.child});
 
   final void Function() onPressed;
   final Widget child;

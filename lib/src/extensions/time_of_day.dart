@@ -20,14 +20,14 @@ extension TimeOfDayString on String {
     try {
       final parts = split(':');
       if (parts.length != 2) {
-        throw FormatException('Invalid time format');
+        throw const FormatException('Invalid time format');
       }
 
       final hour = int.parse(parts[0]);
       final minute = int.parse(parts[1]);
 
       if (hour < 0 || hour > 23 || minute < 0 || minute > 59) {
-        throw FormatException('Time values out of range');
+        throw const FormatException('Time values out of range');
       }
 
       return TimeOfDay(hour: hour, minute: minute);
