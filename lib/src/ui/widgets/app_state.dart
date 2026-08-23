@@ -55,7 +55,8 @@ mixin _AppLifecycleMixin<T extends StatefulWidget> on State<T> {
   }
 }
 
-abstract class AppState<T extends StatefulWidget>() extends State<T>
+abstract class AppState<T extends StatefulWidget>()
+    extends State<T>
     with _AppLifecycleMixin<T>;
 
 abstract class AppConsumerState<T extends ConsumerStatefulWidget>()
