@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:material_ui/material_ui.dart';
 
 extension TimeOfDayExtension on TimeOfDay {
   /// Formats this instance to [pattern].

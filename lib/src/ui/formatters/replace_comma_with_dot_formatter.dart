@@ -1,6 +1,6 @@
 import 'package:flutter/services.dart';
 
-class ReplaceCommaWithDotFormatter implements TextInputFormatter {
+class ReplaceCommaWithDotFormatter() implements TextInputFormatter {
   @override
   TextEditingValue formatEditUpdate(
     TextEditingValue oldValue,

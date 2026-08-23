@@ -4,7 +4,7 @@ import 'package:logger/logger.dart';
 
 final logger = AppLogger();
 
-class AppLogger {
+class AppLogger() {
   late final l = Logger(
     printer: HybridPrinter(
       _defaultPrinter,
@@ -128,7 +128,7 @@ class AppLogger {
 /// Workaround as default output is broken on iOS builds.
 ///
 /// Remove when https://github.com/flutter/flutter/issues/20663 is closed and the workaround is no longer needed.
-class DeveloperConsoleOutput extends LogOutput {
+class DeveloperConsoleOutput() extends LogOutput {
   @override
   void output(OutputEvent event) {
     final buffer = StringBuffer();

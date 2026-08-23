@@ -1,13 +1,8 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
+import 'package:cupertino_ui/cupertino_ui.dart';
 import 'package:flutter_core/flutter_core.dart';
+import 'package:material_ui/material_ui.dart';
 
-class AdaptiveDialogButton extends StatelessWidget {
-  const new({super.key, required this.onPressed, required this.child});
-
-  final void Function() onPressed;
-  final Widget child;
-
+class const AdaptiveDialogButton({super.key, required final void Function() onPressed, required final Widget child}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) => switch (context.theme.platform) {
     .iOS || .macOS => CupertinoDialogAction(onPressed: onPressed, child: child),
